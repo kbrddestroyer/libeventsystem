@@ -48,10 +48,8 @@ jobs:
             c_compiler: cl
           - os: macos-latest
             c_compiler: gcc
-            cpp_compiler: g++
           - os: macos-latest
             c_compiler: cl
-            cpp_compiler: cl 
 
     steps:
     - uses: actions/checkout@v4
@@ -79,8 +77,7 @@ jobs:
         conan profile detect --force
 
     - name: Conan setup
-      working-directory: ./conan
-      run: conan install . -s build_type="${{matrix.build_type}}" --build=missing --output-folder=conan/"${{matrix.build_type}}"
+      run: conan install . -s compiler.cppstd=20 -s build_type="${{matrix.build_type}}" --build=missing --output-folder=conan/"${{matrix.build_type}}"
 
     - name: Configure CMake
       run: >
