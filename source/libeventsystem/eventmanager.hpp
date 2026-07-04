@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <typeindex>
 #include <functional>
+#include <cstdint>
 
 
 namespace events {
@@ -14,7 +15,7 @@ namespace events {
         template <class C> 
         using _cfunc_t  = void (C:: *) (const EventBase &);
 
-        using _desc_t   = uint64_t;
+        using _desc_t   = std::uint64_t;
         using _calls_t  = std::unordered_map<_desc_t, _func_t>;
     public:
         template <typename T>

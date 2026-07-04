@@ -1,6 +1,8 @@
 #include "eventmanager.hpp"
 #include "event.hpp"
 
+#include <stdexcept>
+
 
 void events::EventManager::_subscribe_impl(const _key_t &event_desc, const _desc_t &callb_desc, const _func_t &callback)
 {
